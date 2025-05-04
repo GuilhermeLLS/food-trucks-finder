@@ -45,13 +45,22 @@ async def init_database():
                     if row['ExpirationDate']:
                         row['expiration_date'] = datetime.strptime(row['ExpirationDate'], '%m/%d/%Y %I:%M:%S %p')
                     
+                    # Process food items
+                    food_items = []
+                    if row['FoodItems']:
+                        food_items = [
+                            item.strip() 
+                            for item in row['FoodItems'].split(':') 
+                            if item.strip()
+                        ]
+                    
                     foodtruck = {
                         'locationid': row['locationid'],
                         'applicant': row['Applicant'],
-                        'facility_type': row['FacilityType'],
+                        'facility_type': row['FacilityType'] or 'Not Assigned',
                         'location_description': row['LocationDescription'],
                         'address': row['Address'],
-                        'food_items': row['FoodItems'],
+                        'food_items': food_items,
                         'latitude': row.get('latitude'),
                         'longitude': row.get('longitude'),
                         'schedule': row['Schedule'],

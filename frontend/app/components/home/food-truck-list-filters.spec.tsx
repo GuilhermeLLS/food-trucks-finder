@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { FoodTruckListFilters } from "./food-truck-list-filters";
 import { renderWithRouter } from "~/lib/testing-router-wrapper";
+import { FoodTruckListFilters } from "./food-truck-list-filters";
 
 describe("FoodTruckListFilters", () => {
 	it("should render with default values", () => {

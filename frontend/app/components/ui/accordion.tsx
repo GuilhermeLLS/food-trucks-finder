@@ -7,7 +7,13 @@ import { cn } from "~/lib/utils";
 function Accordion({
 	...props
 }: React.ComponentProps<typeof AccordionPrimitive.Root>) {
-	return <AccordionPrimitive.Root data-slot="accordion" className="space-y-4" {...props} />;
+	return (
+		<AccordionPrimitive.Root
+			data-slot="accordion"
+			className="space-y-4"
+			{...props}
+		/>
+	);
 }
 
 function AccordionItem({

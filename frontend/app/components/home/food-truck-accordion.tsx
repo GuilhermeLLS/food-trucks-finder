@@ -27,14 +27,6 @@ export function FoodTruckAccordion({
 	return (
 		<Accordion type="multiple" className="space-y-4">
 			{foodTrucks.map((truck) => {
-				// Format food items for better readability
-				const foodItems = truck.food_items
-					? truck.food_items
-							.split(":")
-							.map((item: string) => item.trim())
-							.filter(Boolean)
-					: [];
-
 				return (
 					<AccordionItem
 						key={`${truck.locationid}-${truck.permit}`}
@@ -68,7 +60,10 @@ export function FoodTruckAccordion({
 						<AccordionContent className="p-4">
 							<div className="space-y-4">
 								<div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-min">
-									<DetailsItem title="Address" icon={<MapPin size={14} className="text-orange-600" />}>
+									<DetailsItem
+										title="Address"
+										icon={<MapPin size={14} className="text-orange-600" />}
+									>
 										<Typography variant="callout">{truck.address}</Typography>
 										{truck.location_description && (
 											<Typography variant="callout" color="secondary">
@@ -77,22 +72,31 @@ export function FoodTruckAccordion({
 										)}
 									</DetailsItem>
 
-									<DetailsItem title="Hours" icon={<Clock size={14} className="text-orange-600" />}>
+									<DetailsItem
+										title="Hours"
+										icon={<Clock size={14} className="text-orange-600" />}
+									>
 										<Typography variant="callout">
 											{formatHours(truck.days_hours)}
 										</Typography>
 									</DetailsItem>
 
-									<DetailsItem title="Permit Expiration" icon={<Calendar size={14} className="text-orange-600" />}>
+									<DetailsItem
+										title="Permit Expiration"
+										icon={<Calendar size={14} className="text-orange-600" />}
+									>
 										<Typography variant="callout">
 											{new Date(truck.expiration_date).toLocaleDateString()}
 										</Typography>
 									</DetailsItem>
 
-									<DetailsItem title="Food Items" icon={<Utensils size={14} className="text-orange-600" />}>
-										{foodItems.length ? (
+									<DetailsItem
+										title="Food Items"
+										icon={<Utensils size={14} className="text-orange-600" />}
+									>
+										{truck.food_items.length ? (
 											<div className="flex items-center flex-wrap gap-2">
-												{foodItems.map((item, index) => (
+												{truck.food_items.map((item, index) => (
 													<Tooltip key={`${truck.locationid}-${item}-${index}`}>
 														<TooltipTrigger>
 															<Badge
@@ -125,7 +129,10 @@ export function FoodTruckAccordion({
 										)}
 									</DetailsItem>
 
-									<DetailsItem title="Permit Number" icon={<BookOpen size={14} className="text-orange-600" />}>
+									<DetailsItem
+										title="Permit Number"
+										icon={<BookOpen size={14} className="text-orange-600" />}
+									>
 										<Typography variant="callout">{truck.permit}</Typography>
 									</DetailsItem>
 								</div>
@@ -163,7 +170,7 @@ export function FoodTruckAccordion({
 
 interface DetailsItemProps extends React.PropsWithChildren {
 	title: string;
-	icon: React.ReactNode;	
+	icon: React.ReactNode;
 }
 
 function DetailsItem({ title, icon, children }: DetailsItemProps) {

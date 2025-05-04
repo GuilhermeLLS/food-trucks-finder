@@ -8,7 +8,7 @@ class FoodTruck(BaseModel):
     facility_type: str = Field(..., description="Type of facility")
     location_description: Optional[str] = Field(None, description="Description of the location")
     address: Optional[str] = Field(..., description="Street address of the food truck")
-    food_items: str = Field(..., description="List of food items sold")
+    food_items: List[str] = Field(..., description="List of food items sold")
     latitude: float = Field(..., description="Latitude coordinate")
     longitude: float = Field(..., description="Longitude coordinate")
     schedule: Optional[str] = Field(None, description="URL to the schedule")
@@ -25,7 +25,7 @@ class FoodTruck(BaseModel):
                 "facility_type": "Truck",
                 "location_description": "18TH ST: DOLORES ST to CHURCH ST",
                 "address": "3750 18TH ST",
-                "food_items": "Snow Cones: Soft Serve Ice Cream",
+                "food_items": ["Snow Cones", "Soft Serve Ice Cream"],
                 "latitude": 37.76201920035647,
                 "longitude": -122.42730642251331,
                 "schedule": "http://example.com/schedule",
@@ -50,7 +50,7 @@ class FoodTruckListResponse(BaseModel):
                         "facility_type": "Truck",
                         "location_description": "18TH ST: DOLORES ST to CHURCH ST",
                         "address": "3750 18TH ST",
-                        "food_items": "Snow Cones: Soft Serve Ice Cream",
+                        "food_items": ["Snow Cones", "Soft Serve Ice Cream"],
                         "latitude": 37.76201920035647,
                         "longitude": -122.42730642251331,
                         "schedule": "http://example.com/schedule",

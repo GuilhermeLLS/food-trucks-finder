@@ -10,7 +10,7 @@ def test_food_truck_required_fields():
         applicant="Test Truck",
         facility_type="Truck",
         address="123 Test St",
-        food_items="Test Food",
+        food_items=["Test Food"],
         latitude=37.7620,
         longitude=-122.4273,
         status="APPROVED",
@@ -28,7 +28,7 @@ def test_food_truck_optional_fields():
         applicant="Test Truck",
         facility_type="Truck",
         address="123 Test St",
-        food_items="Test Food",
+        food_items=["Test Food"],
         latitude=37.7620,
         longitude=-122.4273,
         status="APPROVED",
@@ -47,7 +47,7 @@ def test_food_truck_with_all_fields():
         facility_type="Truck",
         location_description="18TH ST: DOLORES ST to CHURCH ST",
         address="3750 18TH ST",
-        food_items="Snow Cones: Soft Serve Ice Cream",
+        food_items=["Snow Cones", "Soft Serve Ice Cream"],
         latitude=37.76201920035647,
         longitude=-122.42730642251331,
         schedule="http://example.com/schedule",
@@ -60,7 +60,7 @@ def test_food_truck_with_all_fields():
     assert food_truck.locationid == 1571753
     assert food_truck.applicant == "The Geez Freeze"
     assert food_truck.location_description == "18TH ST: DOLORES ST to CHURCH ST"
-    assert food_truck.food_items == "Snow Cones: Soft Serve Ice Cream"
+    assert food_truck.food_items == ["Snow Cones", "Soft Serve Ice Cream"]
     assert food_truck.days_hours == "Mo-Fr: 9AM-5PM"
     assert food_truck.expiration_date == datetime(2024, 12, 31)
 
@@ -72,7 +72,7 @@ def test_food_truck_validation():
             applicant="Test Truck",
             facility_type="Truck",
             address="123 Test St",
-            food_items="Test Food",
+            food_items=["Test Food"],
             latitude=37.7620,
             longitude=-122.4273,
             status="APPROVED",
@@ -86,7 +86,7 @@ def test_food_truck_list_response():
         applicant="Test Truck",
         facility_type="Truck",
         address="123 Test St",
-        food_items="Test Food",
+        food_items=["Test Food"],
         latitude=37.7620,
         longitude=-122.4273,
         status="APPROVED",

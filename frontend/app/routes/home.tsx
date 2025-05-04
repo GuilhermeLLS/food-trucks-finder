@@ -4,9 +4,9 @@ import { FoodTruckAccordion } from "~/components/home/food-truck-accordion";
 import { FoodTruckListFilters } from "~/components/home/food-truck-list-filters";
 import { FoodTruckListPagination } from "~/components/home/food-truck-list-pagination";
 import { FoodTruckListSkeleton } from "~/components/home/food-truck-list-skeleton";
+import type { FoodTruckStatus } from "~/components/home/food-truck-status-badge";
 import { Typography } from "~/components/ui/typography";
 import type { Route } from "./+types/home";
-import type { FoodTruckStatus } from "~/components/home/food-truck-status-badge";
 
 export interface FoodTruck {
 	locationid: number;
@@ -14,7 +14,7 @@ export interface FoodTruck {
 	facility_type: string;
 	location_description: string;
 	address: string;
-	food_items: string;
+	food_items: string[];
 	latitude: number;
 	longitude: number;
 	schedule: string;
