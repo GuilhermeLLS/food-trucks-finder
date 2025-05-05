@@ -48,6 +48,7 @@ export async function loader({ request }: Route.LoaderArgs) {
 async function getFoodTrucks(
 	searchParams: URLSearchParams,
 ): Promise<LoaderData> {
+	console.log("HOST: ", import.meta.env.VITE_BACKEND_HOST);
 	const result = await fetch(
 		`${import.meta.env.VITE_BACKEND_HOST}/foodtrucks${searchParams.toString() ? `?${searchParams.toString()}` : ""}`,
 	);
