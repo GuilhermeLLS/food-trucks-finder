@@ -9,6 +9,7 @@ services:
       - MONGODB_URL=mongodb://mongodb:27017
       - DATABASE_NAME=foodtruck_db
       - COLLECTION_NAME=foodtrucks
+      - ALLOWED_ORIGINS=*
     volumes:
       - .:/app
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload

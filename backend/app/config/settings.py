@@ -6,6 +6,7 @@ class Settings(BaseSettings):
     mongodb_url: str = ""  # Default empty string
     database_name: str = ""  # Default empty string
     collection_name: str = ""  # Default empty string
+    allowed_origins: str = ""
     
     class Config:
         env_file = ".env"

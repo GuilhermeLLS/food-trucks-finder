@@ -49,7 +49,7 @@ async function getFoodTrucks(
 	searchParams: URLSearchParams,
 ): Promise<LoaderData> {
 	const result = await fetch(
-		`http://localhost:8000/foodtrucks${searchParams.toString() ? `?${searchParams.toString()}` : ""}`,
+		`${import.meta.env.VITE_BACKEND_HOST}/foodtrucks${searchParams.toString() ? `?${searchParams.toString()}` : ""}`,
 	);
 	const data = await result.json();
 	return data;

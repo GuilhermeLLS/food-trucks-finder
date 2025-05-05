@@ -13,6 +13,7 @@ COPY . .
 ENV MONGODB_URL=mongodb://mongodb:27017
 ENV DATABASE_NAME=foodtruck_db
 ENV COLLECTION_NAME=foodtrucks
+ENV ALLOWED_ORIGINS=*
 
 # Command to run the application
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"] 
