@@ -55,7 +55,7 @@ export function FoodTruckListFilters({
 						endAdornment={
 							<button
 								type="button"
-								className="cursor-pointer hover:text-orange-600"
+								className="cursor-pointer hover:text-accent"
 								onClick={() => {
 									if (inputRef.current) {
 										inputRef.current.value = "";

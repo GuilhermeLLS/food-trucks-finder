@@ -1,7 +1,6 @@
 import sys
 from pathlib import Path
 
-# Add the project root directory to the Python path
 project_root = str(Path(__file__).parent.parent)
 sys.path.insert(0, project_root)
 
@@ -14,28 +13,22 @@ from app.config.settings import get_settings
 settings = get_settings()
 
 async def init_database():
-    """Initialize the database with food truck data."""
-    # Connect to MongoDB
     client = AsyncIOMotorClient(settings.mongodb_url)
     db = client[settings.database_name]
     collection = db[settings.collection_name]
     
     try:
-        # Drop existing collection
         await collection.drop()
         
-        # Read and process CSV
         foodtrucks = []
         with open("Mobile_Food_Facility_Permit.csv", 'r') as file:
             csv_reader = csv.DictReader(file)
             for row in csv_reader:
                 try:
-                    # Convert empty strings to None
                     for key in row:
                         if row[key] == '':
                             row[key] = None
                     
-                    # Convert types
                     if row['locationid']:
                         row['locationid'] = int(row['locationid'])
                     if row['Latitude']:
@@ -45,7 +38,6 @@ async def init_database():
                     if row['ExpirationDate']:
                         row['expiration_date'] = datetime.strptime(row['ExpirationDate'], '%m/%d/%Y %I:%M:%S %p')
                     
-                    # Process food items
                     food_items = []
                     if row['FoodItems']:
                         food_items = [

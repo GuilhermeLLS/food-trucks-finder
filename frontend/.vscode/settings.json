@@ -22,5 +22,8 @@
 	"[jsonc]": {
 		"editor.defaultFormatter": "biomejs.biome"
 	},
-	"git.openRepositoryInParentFolders": "always"
+	"git.openRepositoryInParentFolders": "always",
+	"[markdown]": {
+		"editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+	}
 }

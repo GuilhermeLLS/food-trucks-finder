@@ -1,3 +1,4 @@
+import { BookOpen, Calendar, Clock, MapPin, Tag, Utensils } from "lucide-react";
 import {
 	Accordion,
 	AccordionContent,
@@ -6,15 +7,14 @@ import {
 } from "~/components/ui/accordion";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
-import { BookOpen, Calendar, Clock, MapPin, Tag, Utensils } from "lucide-react";
-import type { FoodTruck } from "~/routes/home";
-import { FoodTruckStatusBadge } from "./food-truck-status-badge";
-import { Typography } from "~/components/ui/typography";
 import {
 	Tooltip,
 	TooltipContent,
 	TooltipTrigger,
 } from "~/components/ui/tooltip";
+import { Typography } from "~/components/ui/typography";
+import type { FoodTruck } from "~/routes/home";
+import { FoodTruckStatusBadge } from "./food-truck-status-badge";
 
 export function FoodTruckAccordion({
 	foodTrucks,
@@ -41,13 +41,13 @@ export function FoodTruckAccordion({
 									</Typography>
 									<div className="flex flex-wrap items-center gap-2 mt-1">
 										<div className="flex items-center gap-1">
-											<Tag size={14} className="text-orange-600" />
+											<Tag size={14} className="text-accent" />
 											<Typography variant="callout" color="secondary">
 												{truck.facility_type || "Unknown Type"}
 											</Typography>
 										</div>
 										<div className="flex items-center gap-1">
-											<MapPin size={14} className="text-orange-600" />
+											<MapPin size={14} className="text-accent" />
 											<Typography variant="callout" color="secondary">
 												{truck.address || "Address not available"}
 											</Typography>
@@ -62,7 +62,7 @@ export function FoodTruckAccordion({
 								<div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-min">
 									<DetailsItem
 										title="Address"
-										icon={<MapPin size={14} className="text-orange-600" />}
+										icon={<MapPin size={14} className="text-accent" />}
 									>
 										<Typography variant="callout">{truck.address}</Typography>
 										{truck.location_description && (
@@ -74,7 +74,7 @@ export function FoodTruckAccordion({
 
 									<DetailsItem
 										title="Hours"
-										icon={<Clock size={14} className="text-orange-600" />}
+										icon={<Clock size={14} className="text-accent" />}
 									>
 										<Typography variant="callout">
 											{formatHours(truck.days_hours)}
@@ -83,7 +83,7 @@ export function FoodTruckAccordion({
 
 									<DetailsItem
 										title="Permit Expiration"
-										icon={<Calendar size={14} className="text-orange-600" />}
+										icon={<Calendar size={14} className="text-accent" />}
 									>
 										<Typography variant="callout">
 											{new Date(truck.expiration_date).toLocaleDateString()}
@@ -92,7 +92,7 @@ export function FoodTruckAccordion({
 
 									<DetailsItem
 										title="Food Items"
-										icon={<Utensils size={14} className="text-orange-600" />}
+										icon={<Utensils size={14} className="text-accent" />}
 									>
 										{truck.food_items.length ? (
 											<div className="flex items-center flex-wrap gap-2">
@@ -131,7 +131,7 @@ export function FoodTruckAccordion({
 
 									<DetailsItem
 										title="Permit Number"
-										icon={<BookOpen size={14} className="text-orange-600" />}
+										icon={<BookOpen size={14} className="text-accent" />}
 									>
 										<Typography variant="callout">{truck.permit}</Typography>
 									</DetailsItem>
@@ -144,7 +144,7 @@ export function FoodTruckAccordion({
 											target="_blank"
 											rel="noopener noreferrer"
 										>
-											<Calendar size={14} className="text-orange-600" /> View
+											<Calendar size={14} className="text-accent" /> View
 											Schedule
 										</a>
 									</Button>
@@ -154,8 +154,7 @@ export function FoodTruckAccordion({
 											target="_blank"
 											rel="noopener noreferrer"
 										>
-											<MapPin size={14} className="text-orange-600" /> View on
-											Map
+											<MapPin size={14} className="text-accent" /> View on Map
 										</a>
 									</Button>
 								</div>

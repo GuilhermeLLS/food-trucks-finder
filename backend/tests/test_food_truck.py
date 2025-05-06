@@ -15,7 +15,7 @@ def test_food_truck_required_fields():
         longitude=-122.4273,
         status="APPROVED",
         permit="21MFF-00015"
-    )
+    ) # type: ignore -> We want an incomplete object here
     assert food_truck.locationid == 1571753
     assert food_truck.applicant == "Test Truck"
     assert food_truck.latitude == 37.7620
@@ -33,7 +33,7 @@ def test_food_truck_optional_fields():
         longitude=-122.4273,
         status="APPROVED",
         permit="21MFF-00015"
-    )
+    ) # type: ignore -> We want an incomplete object here
     assert food_truck.location_description is None
     assert food_truck.schedule is None
     assert food_truck.days_hours is None
@@ -68,7 +68,7 @@ def test_food_truck_validation():
     """Test validation of field types and constraints"""
     with pytest.raises(ValueError):
         FoodTruck(
-            locationid="not_an_int",  # Should be int
+            locationid="not_an_int",  # type: ignore -> We want it to be a string
             applicant="Test Truck",
             facility_type="Truck",
             address="123 Test St",
@@ -76,7 +76,11 @@ def test_food_truck_validation():
             latitude=37.7620,
             longitude=-122.4273,
             status="APPROVED",
-            permit="21MFF-00015"
+            permit="21MFF-00015",
+            location_description=None,
+            schedule=None,
+            days_hours=None,
+            expiration_date=None
         )
 
 def test_food_truck_list_response():
@@ -90,7 +94,11 @@ def test_food_truck_list_response():
         latitude=37.7620,
         longitude=-122.4273,
         status="APPROVED",
-        permit="21MFF-00015"
+        permit="21MFF-00015",
+        location_description=None,
+        schedule=None,
+        days_hours=None,
+        expiration_date=None
     )
     
     response = FoodTruckListResponse(

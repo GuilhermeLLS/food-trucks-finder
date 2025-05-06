@@ -56,7 +56,7 @@ describe("FoodTruckListFilters", () => {
 
 		const clearButton = container.querySelector("button");
 		expect(clearButton).toBeInTheDocument();
-		expect(clearButton).toHaveClass("cursor-pointer", "hover:text-orange-600");
+		expect(clearButton).toHaveClass("cursor-pointer", "hover:text-accent");
 	});
 
 	it("should render all status options", () => {

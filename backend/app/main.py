@@ -23,10 +23,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include routers
 app.include_router(food_trucks.router)
 
 @app.get("/")
 async def root():
-    """Root endpoint."""
     return {"message": "Welcome to Food Facilities API"} 

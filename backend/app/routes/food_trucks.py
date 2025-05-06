@@ -15,8 +15,7 @@ async def read_foodtrucks(
     page: Optional[int] = 1,
     service: FoodTruckService = Depends(get_food_truck_service)
 ):
-    """Get all food trucks with optional search query."""
-    food_trucks, total = await service.get_food_trucks(query, status, page or 1)
+    food_trucks, total = await service.get_food_trucks(query=query, status=status, page=page or 1)
     return {"food_trucks": food_trucks, "total": total}
 
 @router.get("/status/{status}", response_model=List[FoodTruck])
@@ -24,5 +23,4 @@ async def read_foodtrucks_by_status(
     status: str,
     service: FoodTruckService = Depends(get_food_truck_service)
 ):
-    """Get food trucks by status."""
-    return await service.get_food_trucks_by_status(status) 
+    return await service.get_food_trucks_by_status(status=status) 
